@@ -1,5 +1,5 @@
 {
-  "installCommand": "../install.sh",
+  "installCommand": "pnpm install",
   "buildCommand": "pnpm --filter @ily/www build",
   "outputDirectory": "dist",
   "redirects": [
