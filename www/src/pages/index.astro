@@ -22,56 +22,57 @@ try {
 } catch {
   // DB not available during dev without env vars
 }
+
+const urls = [
+  ...posts.map(post => ({ url: `/${getSlug(post.id)}`, date: post.dates.created.getTime() })),
+  ...txtFiles.map(f => ({ url: `/${f.name}`, date: f.date.getTime() })),
+  ...bookmarksCollection.map(b => ({ url: b.data.url, date: b.data.date.getTime() })),
+].sort((a, b) => b.date - a.date).map(e => e.url);
 ---
-<Layout title="lewis m.w." isHome>
+<Layout title="lewis m.w." isHome urls={urls}>
 
 {sortedCategories.map(category => {
   const categoryPosts = grouped[category];
   return (
-<details open>
-  <summary>{category}</summary>
-<pre set:html={[
-  ...categoryPosts.slice(0, 10).map(post => formatListItem(post.dates.created, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned })),
-  ...(categoryPosts.length > 10 ? [`<a href="/md/">+${categoryPosts.length - 10} more</a>`] : [])
-].join('\n')} />
-</details>
+<section data-section={category}>
+  <a class="section-label" href={`?just=${category}`}>{category}</a>
+<pre set:html={categoryPosts.map(post => formatListItem(post.dates.created, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned })).join('\n')} />
+</section>
   );
 })}
 
-<details open>
-  <summary>txt</summary>
-<pre set:html={[
-  ...txtFiles.slice(0, 10).map(f => formatListItem(f.date, `/${f.name}`, f.name, { pinned: f.pinned })),
-  ...(txtFiles.length > 10 ? [`<a href="/txt/">+${txtFiles.length - 10} more</a>`] : [])
-].join('\n')} />
-</details>
+<section data-section="txt">
+  <a class="section-label" href="?just=txt">txt</a>
+<pre set:html={txtFiles.map(f => formatListItem(f.date, `/${f.name}`, f.name, { pinned: f.pinned })).join('\n')} />
+</section>
 
-<details open>
-  <summary>bookmarks</summary>
-<pre set:html={[
-  ...bookmarks.slice(0, 10).map(b => formatListItem(b.data.date, b.data.url, b.data.title, { suffix: `<span class="muted">(${extractDomain(b.data.url)})</span>` })),
-  ...(bookmarks.length > 10 ? [`<a href="/bookmarks/">+${bookmarks.length - 10} more</a>`] : [])
-].join('\n')} />
-</details>
+<section data-section="bookmarks">
+  <a class="section-label" href="?just=bookmarks">bookmarks</a>
+<pre set:html={bookmarks.map(b => formatListItem(b.data.date, b.data.url, b.data.title, { suffix: `<span class="muted">(${extractDomain(b.data.url)})</span>` })).join('\n')} />
+</section>
 
-<details open>
-  <summary>guestbook</summary>
+<section data-section="guestbook">
+  <a class="section-label" href="?just=guestbook">guestbook</a>
   <div class="guestbook-entries">
-    {guestbookEntries.slice(0, 10).map(e => (
+    {guestbookEntries.map(e => (
       <div class="guestbook-entry">
         <span class="muted">{formatDate(e.createdAt)}</span>
         <span><b set:html={e.url ? `<a href="${e.url}">${e.name}</a>` : e.name} /> {e.message}</span>
       </div>
     ))}
-    <div class="guestbook-entry">
-      <span>{guestbookEntries.length > 10 && <a href="/guestbook/">+{guestbookEntries.length - 10} more</a>}</span>
-      <span><a href="#" id="sign-guestbook">sign</a><span id="guestbook-status"></span></span>
-    </div>
   </div>
-</details>
+  <form id="guestbook-form" class="guestbook-form">
+    <input type="text" name="name" placeholder="name" required maxlength="100" /><br />
+    <input type="text" name="message" placeholder="message" required maxlength="500" /><br />
+    <input type="url" name="url" placeholder="url (optional)" maxlength="200" /><br />
+    <button type="submit">sign</button>
+    <span id="guestbook-status"></span>
+  </form>
+</section>
 
 <script>
-  import { initGuestbookSign } from '../scripts/guestbook-sign';
-  initGuestbookSign();
+  import { initGuestbookForm } from '../scripts/guestbook-sign';
+  initGuestbookForm();
+
 </script>
 </Layout>

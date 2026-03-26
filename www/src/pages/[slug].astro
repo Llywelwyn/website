@@ -25,9 +25,9 @@ const related = post.data.related ? resolveRelatedPosts(post.data.related, allPo
 <Content />
 </article>
 {related.length > 0 && (
-  <details open>
-    <summary>related</summary>
+  <section>
+    <span class="section-label">related</span>
     <pre set:html={related.map(p => formatListItem(p.dates.created, `/${getSlug(p.id)}`, p.data.title)).join('\n')} />
-  </details>
+  </section>
 )}
 </Layout>

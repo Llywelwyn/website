@@ -72,21 +72,31 @@ div.grid .content {
   display: block;
 }
 
-details {
+section {
   margin: 1rem 0;
 }
 
-summary {
-  cursor: pointer;
+section .section-label {
   font-family: monospace;
-  list-style: none;
 }
 
-summary::-webkit-details-marker {
+.home-name-link {
   display: none;
 }
 
-details pre {
+html[data-just] .home-name {
+  display: none;
+}
+
+html[data-just] .home-name-link {
+  display: inline;
+}
+
+html[data-has] .guestbook-form {
+  display: none;
+}
+
+section pre {
   margin: 0;
 }
 
@@ -98,4 +108,10 @@ details pre {
   display: grid;
   grid-template-columns: 8ch 1fr;
   gap: 0 4ch;
+}
+
+.guestbook-form {
+  margin-top: 0.5rem;
+  margin-left: 12ch;
+  font-family: monospace;
 }

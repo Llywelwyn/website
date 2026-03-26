@@ -15,10 +15,7 @@ export async function GET(context: APIContext) {
   const urls = [
     '/',
     ...posts.map(post => `/${getSlug(post.id)}`),
-    '/txt',
     ...txtFiles.map(txt => `/${txt}`),
-    '/bookmarks',
-    '/guestbook',
   ].map(p => `${site}${p}`);
 
   return new Response([...urls, ...SUBDOMAINS].join('\n'), {

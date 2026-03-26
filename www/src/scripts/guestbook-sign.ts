@@ -1,30 +1,42 @@
-export function initGuestbookSign() {
-  document.getElementById('sign-guestbook')?.addEventListener('click', async (e) => {
+export function initGuestbookForm() {
+  const form = document.getElementById('guestbook-form') as HTMLFormElement | null;
+  if (!form) return;
+
+  const status = document.getElementById('guestbook-status')!;
+
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const status = document.getElementById('guestbook-status')!;
+    status.textContent = '';
 
-    const name = prompt('name:');
-    if (!name) return;
+    const data = new FormData(form);
+    const name = (data.get('name') as string).trim();
+    const message = (data.get('message') as string).trim();
+    const url = (data.get('url') as string).trim() || null;
 
-    const message = prompt('message:');
-    if (!message) return;
+    if (!name || !message) return;
 
-    const url = prompt('url (optional):');
+    const button = form.querySelector('button')!;
+    button.disabled = true;
 
     try {
       const res = await fetch('/api/guestbook', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, message, url: url || null }),
+        body: JSON.stringify({ name, message, url }),
       });
 
       if (res.ok) {
         status.textContent = ' thanks! pending approval.';
+        form.reset();
+      } else if (res.status === 429) {
+        status.textContent = ' too many requests, try later.';
       } else {
         status.textContent = ' error';
       }
     } catch {
       status.textContent = ' failed';
+    } finally {
+      button.disabled = false;
     }
   });
 }
