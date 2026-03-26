@@ -2,10 +2,7 @@ import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
 import { getSlug } from '../lib/md';
 import { getTxtFileNames } from '../lib/txt';
-
-const SUBDOMAINS = [
-  'https://penfield.wynne.rs/',
-];
+import { SUBDOMAINS } from '../lib/consts';
 
 export async function GET(context: APIContext) {
   const site = context.site?.origin ?? 'https://wynne.rs';
