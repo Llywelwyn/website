@@ -1,6 +1,7 @@
 import path from 'node:path';
 import type { CollectionEntry } from 'astro:content';
 import { getGitDates, type GitDates } from './git';
+import { DEFAULT_CATEGORY } from './consts';
 
 type Post = CollectionEntry<'md'>;
 
@@ -55,15 +56,15 @@ export function organizePostsByCategory(posts: PostWithDates[], { sortAlphabetic
   categories: string[];
 } {
   const grouped = posts.reduce((acc, post) => {
-    const category = post.data.category ?? 'md';
+    const category = post.data.category ?? DEFAULT_CATEGORY;
     if (!acc[category]) acc[category] = [];
     acc[category].push(post);
     return acc;
   }, {} as Record<string, PostWithDates[]>);
 
   const categories = Object.keys(grouped).sort((a, b) => {
-    if (a === 'md') return -1;
-    if (b === 'md') return 1;
+    if (a === DEFAULT_CATEGORY) return -1;
+    if (b === DEFAULT_CATEGORY) return 1;
     return a.localeCompare(b);
   });
 

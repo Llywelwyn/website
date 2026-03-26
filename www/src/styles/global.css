@@ -101,17 +101,10 @@ section pre {
 }
 
 .guestbook-entries {
-  font-family: monospace;
-}
-
-.guestbook-entry {
-  display: grid;
-  grid-template-columns: 8ch 1fr;
-  gap: 0 4ch;
+  white-space: pre-wrap;
 }
 
 .guestbook-form {
   margin-top: 0.5rem;
-  margin-left: 12ch;
   font-family: monospace;
 }

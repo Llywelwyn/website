@@ -5,6 +5,7 @@ import { getApprovedEntries, type GuestbookEntry } from '../lib/db';
 import { formatDate, extractDomain, formatListItem } from '../lib/format';
 import { organizePostsByCategory, getSlug, enrichPostsWithDates } from '../lib/md';
 import { getTxtFiles } from '../lib/txt';
+import { DEFAULT_CATEGORY, SECTIONS } from '../lib/consts';
 
 const rawPosts = await getCollection('md');
 const posts = enrichPostsWithDates(rawPosts);
@@ -15,6 +16,12 @@ const bookmarks = bookmarksCollection
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const txtFiles = getTxtFiles();
+
+const visibleLabels = [...sortedCategories.filter(c => c !== DEFAULT_CATEGORY), ...Object.values(SECTIONS)];
+const labelWidth = Math.max(...visibleLabels.map(l => l.length));
+const labelPrefix = (label: string, href: string) =>
+  `${' '.repeat(labelWidth - label.length)}<a class="section-label" href="${href}">${label}</a>  `;
+const blankPrefix = ' '.repeat(labelWidth + 2);
 
 let guestbookEntries: GuestbookEntry[] = [];
 try {
@@ -33,35 +40,29 @@ const urls = [
 
 {sortedCategories.map(category => {
   const categoryPosts = grouped[category];
+  const isDefault = category === DEFAULT_CATEGORY;
   return (
 <section data-section={category}>
-  <a class="section-label" href={`?just=${category}`}>{category}</a>
-<pre set:html={categoryPosts.map(post => formatListItem(post.dates.created, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned })).join('\n')} />
+<pre set:html={categoryPosts.map((post, i) => formatListItem(post.dates.created, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned, prefix: (!isDefault && i === 0) ? labelPrefix(category, `?just=${category}`) : blankPrefix })).join('\n')} />
 </section>
   );
 })}
 
-<section data-section="txt">
-  <a class="section-label" href="?just=txt">txt</a>
-<pre set:html={txtFiles.map(f => formatListItem(f.date, `/${f.name}`, f.name, { pinned: f.pinned })).join('\n')} />
+<section data-section={SECTIONS.plaintext}>
+<pre set:html={txtFiles.map((f, i) => formatListItem(f.date, `/${f.name}`, f.name, { pinned: f.pinned, prefix: i === 0 ? labelPrefix(SECTIONS.plaintext, `?just=${SECTIONS.plaintext}`) : blankPrefix })).join('\n')} />
 </section>
 
-<section data-section="bookmarks">
-  <a class="section-label" href="?just=bookmarks">bookmarks</a>
-<pre set:html={bookmarks.map(b => formatListItem(b.data.date, b.data.url, b.data.title, { suffix: `<span class="muted">(${extractDomain(b.data.url)})</span>` })).join('\n')} />
+<section data-section={SECTIONS.bookmarks}>
+<pre set:html={bookmarks.map((b, i) => formatListItem(b.data.date, b.data.url, b.data.title, { suffix: `<span class="muted">(${extractDomain(b.data.url)})</span>`, prefix: i === 0 ? labelPrefix(SECTIONS.bookmarks, `?just=${SECTIONS.bookmarks}`) : blankPrefix })).join('\n')} />
 </section>
 
-<section data-section="guestbook">
-  <a class="section-label" href="?just=guestbook">guestbook</a>
-  <div class="guestbook-entries">
-    {guestbookEntries.map(e => (
-      <div class="guestbook-entry">
-        <span class="muted">{formatDate(e.createdAt)}</span>
-        <span><b set:html={e.url ? `<a href="${e.url}">${e.name}</a>` : e.name} /> {e.message}</span>
-      </div>
-    ))}
-  </div>
-  <form id="guestbook-form" class="guestbook-form">
+<section data-section={SECTIONS.guestbook}>
+<pre class="guestbook-entries" set:html={guestbookEntries.map((e, i) => {
+  const prefix = i === 0 ? labelPrefix(SECTIONS.guestbook, `?just=${SECTIONS.guestbook}`) : blankPrefix;
+  const nameHtml = e.url ? `<a href="${e.url}"><b>${e.name}</b></a>` : `<b>${e.name}</b>`;
+  return `${prefix}<span class="muted">${formatDate(e.createdAt)}</span>  ${nameHtml} ${e.message}`;
+}).join('\n')} />
+  <form id="guestbook-form" class="guestbook-form" style={`margin-left: ${labelWidth + 12}ch`}>
     <input type="text" name="name" placeholder="name" required maxlength="100" /><br />
     <input type="text" name="message" placeholder="message" required maxlength="500" /><br />
     <input type="url" name="url" placeholder="url (optional)" maxlength="200" /><br />
