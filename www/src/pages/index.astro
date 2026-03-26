@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { getApprovedEntries, type GuestbookEntry } from '../lib/db';
-import { formatDate, formatListItem } from '../lib/format';
+import { formatDate, formatListItem, escapeHtml } from '../lib/format';
 import { organizePostsByCategory, getSlug, enrichPostsWithDates } from '../lib/md';
 import { getTxtFiles } from '../lib/txt';
 import { DEFAULT_CATEGORY, SECTIONS, SUBDOMAINS } from '../lib/consts';
@@ -64,13 +64,18 @@ const urls = [
 <section data-section={SECTIONS.guestbook}>
 <pre class="guestbook-entries" set:html={guestbookEntries.map((e, i) => {
   const prefix = i === 0 ? labelPrefix(SECTIONS.guestbook, `?just=${SECTIONS.guestbook}`) : blankPrefix;
-  const nameHtml = e.url ? `<a href="${e.url}"><b>${e.name}</b></a>` : `<b>${e.name}</b>`;
-  return `<span class="guestbook-entry" style="padding-left: ${labelWidth + 12}ch; text-indent: -${labelWidth + 12}ch;"><span class="list-meta">${prefix}<span class="muted">${formatDate(e.createdAt)}</span>  </span>${nameHtml} ${e.message.replace(/\n/g, ' ')}</span>`;
+  const safeName = escapeHtml(e.name);
+  const safeMessage = escapeHtml(e.message.replace(/\n/g, ' '));
+  const nameHtml = e.url ? `<a href="${escapeHtml(e.url)}"><b>${safeName}</b></a>` : `<b>${safeName}</b>`;
+  return `<span class="guestbook-entry" style="padding-left: ${labelWidth + 12}ch; text-indent: -${labelWidth + 12}ch;"><span class="list-meta">${prefix}<span class="muted">${formatDate(e.createdAt)}</span>  </span>${nameHtml} ${safeMessage}</span>`;
 }).join('')} />
   <form id="guestbook-form" class="guestbook-form" style={`margin-left: ${labelWidth + 12}ch`}>
-    <input type="text" name="name" placeholder="name" required maxlength="100" /><br />
-    <input type="text" name="message" placeholder="message" required maxlength="500" /><br />
-    <input type="url" name="url" placeholder="url (optional)" maxlength="200" /><br />
+    <label class="sr-only" for="gb-name">name</label>
+    <input id="gb-name" type="text" name="name" placeholder="name" required maxlength="100" /><br />
+    <label class="sr-only" for="gb-message">message</label>
+    <input id="gb-message" type="text" name="message" placeholder="message" required maxlength="500" /><br />
+    <label class="sr-only" for="gb-url">url</label>
+    <input id="gb-url" type="url" name="url" placeholder="url (optional)" maxlength="200" /><br />
     <button type="submit">sign</button>
     <span id="guestbook-status"></span>
   </form>

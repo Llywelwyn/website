@@ -31,7 +31,8 @@ export function initGuestbookForm() {
       } else if (res.status === 429) {
         status.textContent = ' too many requests, try later.';
       } else {
-        status.textContent = ' error';
+        const body = await res.json().catch(() => null);
+        status.textContent = body?.error ? ` ${body.error}` : ' error';
       }
     } catch {
       status.textContent = ' failed';
