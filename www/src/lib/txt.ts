@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 import { sortByPinnedThenDate } from './format';
-import { getGitLastModifiedDate } from './git';
+import { getGitCreationDate } from './git';
 
 export interface TxtFile {
   name: string;
@@ -39,7 +39,7 @@ export function getTxtFiles(): TxtFile[] {
     .filter(file => file.endsWith('.txt'))
     .map(name => ({
       name,
-      date: getGitLastModifiedDate(path.join(txtDir, name)),
+      date: getGitCreationDate(path.join(txtDir, name)),
       pinned: pinnedSet.has(name),
       description: descriptions[name],
     }));
