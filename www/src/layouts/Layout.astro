@@ -3,19 +3,24 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
   showHeader?: boolean;
   isHome?: boolean;
   urls?: string[];
 }
 
-const { title, showHeader = true, isHome = false, urls = [] } = Astro.props;
+const { title, description = 'personal website of lewis m.w.', showHeader = true, isHome = false, urls = [] } = Astro.props;
 ---
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
   <link rel="alternate" type="application/rss+xml" title="wynne.rs" href="/feed.xml" />
   {urls.length > 0 && <script is:inline define:vars={{ urls }}>window.__urls = urls;</script>}
   <script is:inline src="/js/params.js"></script>
