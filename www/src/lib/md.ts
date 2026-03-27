@@ -1,20 +1,12 @@
 import type { CollectionEntry } from 'astro:content';
 import { DEFAULT_CATEGORY } from './consts';
+import { sortEntries } from './format';
 
 type Post = CollectionEntry<'md'>;
 
 export function getSlug(postId: string): string {
   const parts = postId.split('/');
   return parts[parts.length - 1];
-}
-
-function sortPosts(posts: Post[], { alphabetically = false } = {}): Post[] {
-  return posts.slice().sort((a, b) => {
-    if (a.data.pinned && !b.data.pinned) return -1;
-    if (!a.data.pinned && b.data.pinned) return 1;
-    if (alphabetically) return a.data.title.localeCompare(b.data.title);
-    return b.data.date.getTime() - a.data.date.getTime();
-  });
 }
 
 export function resolveRelatedPosts<T extends { id: string }>(
@@ -25,7 +17,7 @@ export function resolveRelatedPosts<T extends { id: string }>(
   return slugs.flatMap(s => bySlug.get(s) ?? []);
 }
 
-export function organizePostsByCategory(posts: Post[], { sortAlphabetically = false } = {}): {
+export function organizePostsByCategory(posts: Post[]): {
   grouped: Record<string, Post[]>;
   categories: string[];
 } {
@@ -43,7 +35,7 @@ export function organizePostsByCategory(posts: Post[], { sortAlphabetically = fa
   });
 
   for (const category of categories) {
-    grouped[category] = sortPosts(grouped[category], { alphabetically: sortAlphabetically });
+    grouped[category] = sortEntries(grouped[category], p => p.data);
   }
 
   return { grouped, categories };

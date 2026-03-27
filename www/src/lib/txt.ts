@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
-import { sortByPinnedThenDate } from './format';
+import { sortEntries } from './format';
 
 export interface TxtFile {
   name: string;
@@ -44,6 +44,6 @@ export function getTxtFiles(): TxtFile[] {
       pinned: pinnedSet.has(name),
       description: descriptions[name],
     }));
-  return sortByPinnedThenDate(files);
+  return sortEntries(files);
 }
 
