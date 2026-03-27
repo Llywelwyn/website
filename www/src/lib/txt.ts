@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 import { sortByPinnedThenDate } from './format';
-import { getGitCreationDate } from './git';
 
 export interface TxtFile {
   name: string;
@@ -14,6 +13,7 @@ export interface TxtFile {
 export interface TxtConfig {
   pinned?: string[];
   descriptions?: Record<string, string>;
+  dates?: Record<string, string>;
 }
 
 export function getTxtDir(): string {
@@ -33,13 +33,14 @@ export function getTxtFiles(): TxtFile[] {
 
   const config = loadTxtConfig();
   const pinnedSet = new Set(config.pinned || []);
-
   const descriptions = config.descriptions || {};
+  const dates = config.dates || {};
+
   const files = fs.readdirSync(txtDir)
     .filter(file => file.endsWith('.txt'))
     .map(name => ({
       name,
-      date: getGitCreationDate(path.join(txtDir, name)),
+      date: dates[name] ? new Date(dates[name]) : new Date(0),
       pinned: pinnedSet.has(name),
       description: descriptions[name],
     }));

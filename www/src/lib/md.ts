@@ -1,47 +1,19 @@
-import path from 'node:path';
 import type { CollectionEntry } from 'astro:content';
-import { getGitDates, type GitDates } from './git';
 import { DEFAULT_CATEGORY } from './consts';
 
 type Post = CollectionEntry<'md'>;
-
-export interface PostWithDates extends Post {
-  dates: GitDates;
-}
 
 export function getSlug(postId: string): string {
   const parts = postId.split('/');
   return parts[parts.length - 1];
 }
 
-function getPostFilePath(post: Post): string {
-  return path.join(process.cwd(), 'content', `${post.id}.md`);
-}
-
-export function enrichPostWithDates(post: Post): PostWithDates {
-  const filePath = getPostFilePath(post);
-  const gitDates = getGitDates(filePath);
-  const created = post.data.date ?? gitDates.created;
-  const updated = post.data.updated ?? gitDates.updated;
-  return {
-    ...post,
-    dates: {
-      created,
-      updated: updated && updated.getTime() !== created.getTime() ? updated : null,
-    },
-  };
-}
-
-export function enrichPostsWithDates(posts: Post[]): PostWithDates[] {
-  return posts.map(enrichPostWithDates);
-}
-
-function sortPosts(posts: PostWithDates[], { alphabetically = false } = {}): PostWithDates[] {
+function sortPosts(posts: Post[], { alphabetically = false } = {}): Post[] {
   return posts.slice().sort((a, b) => {
     if (a.data.pinned && !b.data.pinned) return -1;
     if (!a.data.pinned && b.data.pinned) return 1;
     if (alphabetically) return a.data.title.localeCompare(b.data.title);
-    return b.dates.created.getTime() - a.dates.created.getTime();
+    return b.data.date.getTime() - a.data.date.getTime();
   });
 }
 
@@ -53,8 +25,8 @@ export function resolveRelatedPosts<T extends { id: string }>(
   return slugs.flatMap(s => bySlug.get(s) ?? []);
 }
 
-export function organizePostsByCategory(posts: PostWithDates[], { sortAlphabetically = false } = {}): {
-  grouped: Record<string, PostWithDates[]>;
+export function organizePostsByCategory(posts: Post[], { sortAlphabetically = false } = {}): {
+  grouped: Record<string, Post[]>;
   categories: string[];
 } {
   const grouped = posts.reduce((acc, post) => {
@@ -62,7 +34,7 @@ export function organizePostsByCategory(posts: PostWithDates[], { sortAlphabetic
     if (!acc[category]) acc[category] = [];
     acc[category].push(post);
     return acc;
-  }, {} as Record<string, PostWithDates[]>);
+  }, {} as Record<string, Post[]>);
 
   const categories = Object.keys(grouped).sort((a, b) => {
     if (a === DEFAULT_CATEGORY) return -1;

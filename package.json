@@ -6,6 +6,7 @@
     "dev:penfield": "pnpm --filter @ily/penfield dev",
     "dev:www": "pnpm --filter @ily/www dev",
     "build:penfield": "pnpm --filter @ily/penfield build",
-    "build:www": "pnpm --filter @ily/www build"
+    "build:www": "pnpm --filter @ily/www build",
+    "validate:www": "pnpm --filter @ily/www validate"
   }
 }

@@ -7,7 +7,8 @@ const md = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './content' }),
   schema: z.object({
     title: z.string(),
-    date: z.coerce.date().optional(),
+    date: z.coerce.date(),
+    updated: z.coerce.date().optional(),
     pinned: z.boolean().optional(),
     category: z.string().optional(),
     related: z.array(z.string()).optional(),

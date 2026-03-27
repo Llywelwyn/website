@@ -3,12 +3,11 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { getApprovedEntries, type GuestbookEntry } from '../lib/db';
 import { formatDate, formatListItem, escapeHtml } from '../lib/format';
-import { organizePostsByCategory, getSlug, enrichPostsWithDates } from '../lib/md';
+import { organizePostsByCategory, getSlug } from '../lib/md';
 import { getTxtFiles } from '../lib/txt';
 import { DEFAULT_CATEGORY, SECTIONS, SUBDOMAINS } from '../lib/consts';
 
-const rawPosts = await getCollection('md');
-const posts = enrichPostsWithDates(rawPosts);
+const posts = await getCollection('md');
 const { grouped, categories: sortedCategories } = organizePostsByCategory(posts);
 
 const bookmarksCollection = await getCollection('bookmarks');
@@ -25,7 +24,7 @@ try {
 }
 
 const urls = [
-  ...posts.map(post => ({ url: `/${getSlug(post.id)}`, date: post.dates.created.getTime() })),
+  ...posts.map(post => ({ url: `/${getSlug(post.id)}`, date: post.data.date.getTime() })),
   ...txtFiles.map(f => ({ url: `/${f.name}`, date: f.date.getTime() })),
 ].sort((a, b) => b.date - a.date).map(e => e.url).concat(SUBDOMAINS);
 ---
@@ -38,7 +37,7 @@ const urls = [
 <section data-section={category}>
 {!isDefault && <a class="section-label" href={`?just=${category}`}>{category}</a>}
 <div class="entry-list" set:html={categoryPosts.map(post =>
-  `<span class="entry">${formatListItem(post.dates.created, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned })}</span>`
+  `<span class="entry">${formatListItem(post.data.date, `/${getSlug(post.id)}`, post.data.title, { pinned: post.data.pinned })}</span>`
 ).join('')} />
 </section>
   );

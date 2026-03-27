@@ -2,11 +2,10 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { formatDate, formatListItem, excerpt } from '../lib/format';
-import { getSlug, enrichPostWithDates, enrichPostsWithDates, resolveRelatedPosts } from '../lib/md';
+import { getSlug, resolveRelatedPosts } from '../lib/md';
 
 export async function getStaticPaths() {
-  const rawPosts = await getCollection('md');
-  const allPosts = enrichPostsWithDates(rawPosts);
+  const allPosts = await getCollection('md');
   return allPosts.map(post => ({
     params: { slug: getSlug(post.id) },
     props: { post, allPosts }
@@ -22,13 +21,13 @@ const description = excerpt((post as any).body) || undefined;
 
 <article>
 <h1>{post.data.title}</h1>
-<p class="muted" style="margin-top: 0;">{formatDate(post.dates.created)}{post.dates.updated && ` (updated ${formatDate(post.dates.updated)})`}</p>
+<p class="muted" style="margin-top: 0;">{formatDate(post.data.date)}{post.data.updated && ` (updated ${formatDate(post.data.updated)})`}</p>
 <Content />
 </article>
 {related.length > 0 && (
   <section>
     <span class="section-label">related</span>
-    <pre set:html={related.map(p => formatListItem(p.dates.created, `/${getSlug(p.id)}`, p.data.title)).join('\n')} />
+    <pre set:html={related.map(p => formatListItem(p.data.date, `/${getSlug(p.id)}`, p.data.title)).join('\n')} />
   </section>
 )}
 </Layout>
