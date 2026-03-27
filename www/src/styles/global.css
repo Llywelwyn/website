@@ -1,9 +1,10 @@
 body {
   box-sizing: border-box;
-  max-width: 48rem;
+  max-width: 34rem;
   margin: 0 auto;
   padding: 1rem;
   text-align: justify;
+  font-family: 'Times New Roman', serif;
 }
 
 img {
@@ -17,6 +18,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .muted {
   color: #888;
+  font-size: 0.9rem;
 }
 
 .left, .right {
@@ -24,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
 }
 
-@media (min-width: 63rem) {
+@media (min-width: 58rem) {
   .left, .right {
     display: inline;
     position: relative;
@@ -78,9 +80,6 @@ section {
   margin: 1rem 0;
 }
 
-section .section-label {
-  font-family: monospace;
-}
 
 .home-name-link {
   display: none;
@@ -102,8 +101,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 2ch;
-  font-family: monospace;
+  gap: 2rem;
 }
 
 .header-name {
@@ -119,15 +117,13 @@ section pre {
 }
 
 .entry-list {
-  columns: 2 24ch;
-  column-gap: 3ch;
-  font-family: monospace;
   margin: 0;
 }
 
 .entry {
   display: grid;
-  grid-template-columns: 10ch 1fr;
+  grid-template-columns: 4rem 1fr;
+  align-items: baseline;
   break-inside: avoid;
 }
 
@@ -150,27 +146,23 @@ section pre {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: right;
-  padding-left: 1ch;
+  padding-left: 0.5rem;
 }
 
 .guestbook-entries {
-  font-family: monospace;
-  white-space: pre;
+  margin: 0;
 }
 
 .guestbook-entry {
   display: grid;
-  grid-template-columns: 10ch 1fr;
-}
-
-.guestbook-entry > span:last-child {
-  white-space: normal;
+  grid-template-columns: 4rem 1fr;
+  align-items: baseline;
+  break-inside: avoid;
 }
 
 .guestbook-form {
   margin-top: 0.5rem;
-  margin-left: 10ch;
-  font-family: monospace;
+  margin-left: 4rem;
 }
 
 html[data-compact] .list-meta {
