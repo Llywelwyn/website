@@ -6,7 +6,7 @@ export const SUBDOMAINS = [
 ];
 
 export const SECTIONS = {
-  plaintext: 'plaintext',
+  files: 'files',
   bookmarks: 'bookmarks',
   guestbook: 'guestbook',
 } as const;

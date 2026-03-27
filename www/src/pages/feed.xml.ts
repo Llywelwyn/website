@@ -1,12 +1,12 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
-import { getSlug, type Post } from '../lib/md';
+import { getSlug, type Post } from '../lib/posts';
 import { getTxtFiles } from '../lib/txt';
 import { excerpt } from '../lib/format';
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection('md');
+  const posts = await getCollection('posts');
   const txtFiles = getTxtFiles();
 
   const items = [

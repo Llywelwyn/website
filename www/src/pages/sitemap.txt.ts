@@ -1,12 +1,12 @@
 import { getCollection } from 'astro:content';
 import type { APIContext } from 'astro';
-import { getSlug } from '../lib/md';
+import { getSlug } from '../lib/posts';
 import { getTxtFiles } from '../lib/txt';
 import { SUBDOMAINS } from '../lib/consts';
 
 export async function GET(context: APIContext) {
   const site = context.site?.origin ?? 'https://wynne.rs';
-  const posts = await getCollection('md');
+  const posts = await getCollection('posts');
   const txtFiles = getTxtFiles().map(f => f.name);
 
   const urls = [

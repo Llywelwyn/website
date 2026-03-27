@@ -28,4 +28,4 @@ const bookmarks = defineCollection({
   })
 });
 
-export const collections = { md, bookmarks };
+export const collections = { posts, bookmarks };

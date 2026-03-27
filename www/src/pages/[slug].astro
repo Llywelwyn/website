@@ -2,10 +2,10 @@
 import { getCollection, render } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { formatDate, formatListItem, excerpt, wordCount } from '../lib/format';
-import { getSlug, resolveRelatedPosts, type Post } from '../lib/md';
+import { getSlug, resolveRelatedPosts, type Post } from '../lib/posts';
 
 export async function getStaticPaths() {
-  const allPosts = await getCollection('md');
+  const allPosts = await getCollection('posts');
   return allPosts.map(post => ({
     params: { slug: getSlug(post.id) },
     props: { post, allPosts }

@@ -3,11 +3,11 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { getApprovedEntries, type GuestbookEntry } from '../lib/db';
 import { formatDate, formatListItem, extractDomain, wordCount, escapeHtml } from '../lib/format';
-import { organizePostsByCategory, getSlug } from '../lib/md';
+import { organizePostsByCategory, getSlug } from '../lib/posts';
 import { getTxtFiles } from '../lib/txt';
 import { DEFAULT_CATEGORY, SECTIONS, SUBDOMAINS } from '../lib/consts';
 
-const posts = await getCollection('md');
+const posts = await getCollection('posts');
 const { grouped, categories: sortedCategories } = organizePostsByCategory(posts);
 
 const bookmarksCollection = await getCollection('bookmarks');
@@ -43,8 +43,8 @@ const urls = [
   );
 })}
 
-<section data-section={SECTIONS.plaintext}>
-<a class="section-label" href={`?just=${SECTIONS.plaintext}`}>{SECTIONS.plaintext}</a>
+<section data-section={SECTIONS.files}>
+<a class="section-label" href={`?just=${SECTIONS.files}`}>{SECTIONS.files}</a>
 <div class="entry-list" set:html={txtFiles.map(f => {
   const name = f.name.replace(/\.txt$/, '');
   return `<span class="entry">${formatListItem(f.date, `/${f.name}`, name, { suffix: f.description })}</span>`;
