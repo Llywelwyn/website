@@ -103,11 +103,17 @@ section pre {
 }
 
 .guestbook-entries {
-  white-space: pre-wrap;
+  font-family: monospace;
+  white-space: pre;
 }
 
 .guestbook-entry {
-  display: block;
+  display: grid;
+  grid-template-columns: var(--meta-width) 1fr;
+}
+
+.guestbook-entry > span:last-child {
+  white-space: normal;
 }
 
 .guestbook-form {
@@ -119,8 +125,7 @@ html[data-compact] .list-meta {
   display: none;
 }
 html[data-compact] .guestbook-entry {
-  padding-left: 0 !important;
-  text-indent: 0 !important;
+  display: block;
 }
 html[data-compact] .guestbook-form {
   margin-left: 0 !important;

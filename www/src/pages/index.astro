@@ -62,13 +62,13 @@ const urls = [
 </section>
 
 <section data-section={SECTIONS.guestbook}>
-<pre class="guestbook-entries" set:html={guestbookEntries.map((e, i) => {
+<div class="guestbook-entries" style={`--meta-width: ${labelWidth + 12}ch`} set:html={guestbookEntries.map((e, i) => {
   const prefix = i === 0 ? labelPrefix(SECTIONS.guestbook, `?just=${SECTIONS.guestbook}`) : blankPrefix;
   const safeName = escapeHtml(e.name);
   const safeMessage = escapeHtml(e.message.replace(/\n/g, ' '));
   const nameHtml = e.url ? `<a href="${escapeHtml(e.url)}"><b>${safeName}</b></a>` : `<b>${safeName}</b>`;
-  return `<span class="guestbook-entry" style="padding-left: ${labelWidth + 12}ch; text-indent: -${labelWidth + 12}ch;"><span class="list-meta">${prefix}<span class="muted">${formatDate(e.createdAt)}</span>  </span>${nameHtml} ${safeMessage}</span>`;
-}).join('')} />
+  return `<span class="guestbook-entry"><span class="list-meta">${prefix}<span class="muted">${formatDate(e.createdAt)}</span>  </span><span>${nameHtml} ${safeMessage}</span></span>`;
+}).join('')} /></div>
   <form id="guestbook-form" class="guestbook-form" style={`margin-left: ${labelWidth + 12}ch`}>
     <label class="sr-only" for="gb-name">name</label>
     <input id="gb-name" type="text" name="name" placeholder="name" required maxlength="100" /><br />
