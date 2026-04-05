@@ -4,3 +4,4 @@ dist
 data
 pnpm-lock.yaml
 **/.env
+CLAUDE.md
