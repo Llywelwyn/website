@@ -40,7 +40,7 @@ PUBLIC FILES
        man.txt         This man page.
 
 SEE ALSO
-       source          https://github.com/llywelwyn/wynne.rs
+       source          https://git.ily.rs/lew/website
 
 AUTHOR
        lewis m.w.      <lewis@wynne.rs>
