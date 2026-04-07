@@ -10,6 +10,9 @@ import remarkAside from './src/plugins/remark-aside.ts';
 export default defineConfig({
   output: 'static',
   adapter: node({ mode: 'standalone' }),
+  redirects: {
+    '/txt/now.txt': '/now.txt'
+  },
   integrations: [db()],
   markdown: {
     remarkPlugins: [
