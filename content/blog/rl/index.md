@@ -364,7 +364,7 @@ This week was for showing off. I finished off the remnants of morgue files. In t
 
 ## Reflections
 
-I don't have much reflection besides the obvious. Mainly, I'd do a lot differently if I did it again, and I'm unhappy with a lot of the code I produced.
+I'd do a lot differently if I did it again, and I'm unhappy with a lot of the code I produced.
 
 I think this is a good thing. To come away from a sprint and see places where things could be improved means the whole thing was actually worth doing, because something was actually learned along the way.
 
