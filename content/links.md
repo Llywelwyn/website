@@ -5,15 +5,21 @@ path = "links"
 +++
 
 <dl>
-  <dt><a href="https://ily.rs/status">ily.rs/status</a></dt>
-  <dd>Uptime for my services, and some others I track.</dd>
 
-  <dt><a href="https://textonly.website">textonly.website</a></dt>
-  <dd>Collection of text-only personal sites</dd>
+{% link(href="https://ily.rs/status", title="ily.rs/status") %}
+Uptime for my services, and some others I track.
+{% end %}
 
-  <dt><a href="https://t0.vc">t0.vc</a></dt>
-  <dd>Tanner's site. <a href="/g">My guestbook</a> started off as a Rust port of <a href="https://t0.vc/g/">his</a>, and has gone on since to become more of its own thing.</dd>
+{% link(href="https://textonly.website", title="textonly.website") %}
+Collection of text-only personal sites
+{% end %}
 
-  <dt><a href="https://nownownow.com">nownownow.com</a></dt>
-  <dd>Directory of /now pages</dd>
+{% link(href="https://t0.vc", title="t0.vc") %}
+Tanner's site. [My guestbook](/g) started off as a Rust port of [his](https://t0.vc/g/), and has gone on since to become more of its own thing.
+{% end %}
+
+{% link(href="https://nownownow.com", title="nownownow.com") %}
+Directory of /now pages
+{% end %}
+
 </dl>
