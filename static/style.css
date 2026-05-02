@@ -1,3 +1,7 @@
+:root {
+  --muted: #666;
+}
+
 body {
   max-width: 70ch;
   line-height: 1.3;
@@ -58,4 +62,29 @@ code {
 
 .anchor:hover {
   opacity: 1;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.notes {
+  display: grid;
+  grid-template-columns: minmax(2.5rem, min-content) 1fr;
+  gap: 0.5rem 0.75rem;
+  margin: 1rem 0;
+}
+
+.notes .meta {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.notes p { margin: 0; }
+.notes p + p { margin-top: 0.5rem; }
+
+.notes--dialogue .meta {
+  text-align: right;
+  font-style: italic;
 }

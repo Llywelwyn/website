@@ -4,10 +4,18 @@
 
 {% block content %}
 
-<p></p>
+<p>This site was once more complicated, but I've stripped it down to bare essentials.</p>
 
 {% set blog = get_section(path="blog/_index.md") %}
 {% for post in blog.pages %}
 {{ post.date }}&emsp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
 {% endfor %}
+
+<p>Reading</p>
+
+{% set reading = get_section(path="reading/_index.md") %}
+{% for post in reading.pages %}
+{{ post.date}}&emsp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
+{% endfor %}
+
 {% endblock %}
