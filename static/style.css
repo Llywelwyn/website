@@ -131,3 +131,23 @@ mark {
   color: black;
   font-style: italic;
 }
+
+.mascot {
+  position: fixed;
+  right: 2rem;
+  bottom: 0;
+  width: 280px;
+  user-select: none;
+}
+
+.mascot img {
+  width: 100%;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+@media (max-width: 700px) {
+  .mascot {
+    display: none;
+  }
+}
