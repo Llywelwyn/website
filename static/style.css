@@ -134,7 +134,7 @@ mark {
 
 .mascot {
   position: fixed;
-  right: 2rem;
+  right: calc(2rem - (100vw - 100%));
   bottom: 0;
   width: 280px;
   user-select: none;
