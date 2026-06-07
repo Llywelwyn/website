@@ -4,20 +4,17 @@
 
 body {
   max-width: 70ch;
-  margin: 0 auto;
-  padding: 2rem 1.25rem;
-  line-height: 1.5;
-  font-family: Georgia, "Iowan Old Style", Palatino, serif;
+  padding: 1rem 1rem;
   font-variant-numeric: tabular-nums;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
-  margin: 1.5rem 0 0.5rem;
+  margin: 1rem 0 0.5rem;
 }
 
 h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 h3 {
@@ -39,7 +36,7 @@ a:hover {
 }
 
 nav {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   color: var(--muted);
 }
 
