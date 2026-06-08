@@ -4,5 +4,25 @@
 
 {% block content %}
 <h1>{{ page.title }}</h1>
+
+{% if page.toc %}
+  <ul>
+  {% for header in page.toc %}
+    <li>
+      <a href="{{ header.permalink | safe }}">{{ header.title }}</a>
+      {% if header.children %}
+        <ul>
+          {% for subheader in header.children %}
+            <li>
+              <a href="{{ subheader.permalink | safe }}">{{ subheader.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+{% endif %}
+
 {{ page.content | safe }}
 {% endblock %}
