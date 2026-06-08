@@ -6,14 +6,14 @@
 
 {% set blog = get_section(path="blog/_index.md") %}
 {% for post in blog.pages %}
-<span class="muted">{{ post.date }}</span>&emsp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
+<span class="muted">{{ post.date }}</span>&ensp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
 {% endfor %}
 
 <h2>Reading</h2>
 
 {% set reading = get_section(path="read/_index.md") %}
 {% for post in reading.pages %}
-<span class="muted">{{ post.date}}</span>&emsp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
+<span class="muted">{{ post.date}}</span>&ensp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
 {% endfor %}
 
 {% endblock %}
