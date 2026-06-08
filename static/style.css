@@ -1,10 +1,16 @@
 :root {
-  --muted: #666;
+  color-scheme: light dark;
+  --bg: light-dark(#fff, #111);
+  --fg: light-dark(#000, #e8e8e8);
+  --muted: light-dark(#666, #999);
+  --mark: light-dark(#f4efd8, #b6b491);
 }
 
 body {
   max-width: 70ch;
   padding: 1rem 1rem;
+  background: var(--bg);
+  color: var(--fg);
   font-variant-numeric: tabular-nums;
 }
 
@@ -28,7 +34,7 @@ p {
 }
 
 a {
-  color: black;
+  color: var(--fg);
 }
 
 a:hover {
@@ -83,8 +89,8 @@ hr {
 }
 
 mark {
-  background: #f4efd8;
-  padding: 0.1em 0.2em;
+  background: var(--mark);
+  padding: 0.05em 0.2em;
 }
 
 .muted {
@@ -98,7 +104,7 @@ mark {
 }
 
 .anchor:hover {
-  color: black;
+  color: var(--fg);
 }
 
 .notes {
@@ -128,7 +134,7 @@ mark {
 }
 
 .notes--glossary .meta {
-  color: black;
+  color: var(--fg);
   font-style: italic;
 }
 
