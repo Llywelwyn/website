@@ -3,8 +3,6 @@ title = "The Dream of a Ridiculous Man (1877) by Fyodor Dostoevsky"
 date = 2026-05-02
 +++
 
-Page for page, one of my favourite pieces of writing ever.
-
 <div class="notes">
 
 {% h(at="01") %}
