@@ -2,8 +2,6 @@
 
 {% block content %}
 
-<p>This site was once more complicated, but I've stripped it down to bare essentials.</p>
-
 {% set blog = get_section(path="blog/_index.md") %}
 {% for post in blog.pages %}
 <span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span>&ensp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
