@@ -6,12 +6,8 @@ path = "now"
 
 <dl>
 
-{% update(date="19/06/26") %}
-Finally completed.
-{% end %}
-
-{% update(date="07/06/26") %}
-It's cold again.
+{% update(date="23/06/26") %}
+Finally moved.
 {% end %}
 
 {% update(date="28/04/26") %}
