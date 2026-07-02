@@ -97,14 +97,6 @@ mark {
   color: var(--muted);
 }
 
-.dial {
-  margin: 2rem 0;
-}
-
-.dial p {
-  text-align: center;
-}
-
 .anchor {
   text-decoration: none;
   margin-right: 0.3em;

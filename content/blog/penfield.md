@@ -13,9 +13,9 @@ I love the book and thought making some sort of digital mood organ would be cool
 
 What I've ended up with is a single static page that regenerates once-per-hour. Each time it regenerates, the ring number is incremented by one, and a new dial tone is randomised. Currently we're on number 3868, so roughly half a year since it started ringing (and to that end, half a year late in writing this post).
 
-<div class="dial">
-<p><b>Ring #3868.</b> Your Penfield Mood Organ wakes you.</p>
-<p><b>816</b>. Desire to return to bed.</p>
+<div style="margin:2rem">
+<p style="text-align:center;"><b>Ring #3868.</b> Your Penfield Mood Organ wakes you.</p>
+<p style="text-align:center;"><b>816</b>. Desire to return to bed.</p>
 </div>
 
 # The 250KB Club
