@@ -7,9 +7,11 @@ I made a Penfield Mood Organ as a submission for <a href="https://250kb.club">Th
 
 # The Mood Organ
 
-The Penfield Mood Organ is a fictional device from *Do Androids Dream of Electric Sheep?* (1968) by Philip K Dick. It uses Penfield artificial brain stimulation to modify the emotions of the user. All the user must do is read the manual to find the proper number, dial it, and then feel exactly as they've requested. For example, while I'm writing this, the current tone is <mark>***816**. Desire to return to bed*</mark>.
+The Penfield Mood Organ is a fictional device from *Do Androids Dream of Electric Sheep?* (1968) by Philip K Dick. It uses Penfield artificial brain stimulation to modify the emotions of the user. All the user must do is read the manual to find the proper number, dial it, and then feel exactly as they've requested. While I'm writing this, the current tone on my organ is <mark>***816**. Desire to return to bed*</mark>.
 
-I love the book and thought making some sort of digital mood organ would be cool enough to be considered <mark>a piece of art</mark>. It's a single page that regenerates once-per-hour, incrementing the current ring number, and creating a new random message in the form of a flavour line about the Penfield Mood Organ waking you, the selected dial tone, and the meaning of that tone.
+I love the book and thought making some sort of digital mood organ would be cool enough to be considered <mark>a piece of art</mark>.
+
+What I've ended up with is a single static page that regenerates once-per-hour. Each time it regenerates, the ring number is incremented by one, and a new dial tone is randomised. Currently we're on number 3868, so roughly half a year since it started ringing (and to that end, half a year late in writing this post).
 
 <div class="dial">
 <p><b>Ring #3868.</b> Your Penfield Mood Organ wakes you.</p>
@@ -24,7 +26,7 @@ I had two aims setting out:
 - be listed at 0 kb in the ranking (in practice, because it counts in 1 kb increments, this meant a complete site in 500 bytes or less),
 - and create something that is, in some fashion, <mark>a piece of art</mark>, whatever that means.
 
-As of writing this, the Penfield Mood Organ is <a href="https://250kb.club/penfield-ily-rs/">the smallest page on the site</a> and is 100% content, ringing in at around 260 bytes on average. There's a bit of variance depending on which *mood* was rung for that particular hour.
+As of writing this, the Penfield Mood Organ is <a href="https://250kb.club/penfield-ily-rs/">the smallest page on the site</a> and is 100% content, ringing in at around 260 bytes on average. There's a bit of variance depending on which *mood* was rung for that particular hour. It's also the biggest source of traffic to this site which surprised me. I didn't realise the 250KB club was so popular, but more people go to the Mood Organ from the club and then on to view this blog than anywhere else.
 
 I'd like to see what else I can squeeze into the incredibly small <500 byte limit but I need a good idea. As it stands I don't think I have anything that justifies the cost of the extra bytes.
 
