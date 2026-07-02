@@ -3,15 +3,19 @@
 {% block content %}
 
 {% set blog = get_section(path="blog/_index.md") %}
+<div class="datelist">
 {% for post in blog.pages %}
-<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span>&ensp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
+<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
 {% endfor %}
+</div>
 
 <h2>Reading</h2>
 
 {% set reading = get_section(path="read/_index.md") %}
+<div class="datelist">
 {% for post in reading.pages %}
-<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span>&ensp;<a href="{{ post.permalink }}">{{ post.title }}</a><br>
+<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
 {% endfor %}
+</div>
 
 {% endblock %}

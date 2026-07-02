@@ -107,6 +107,12 @@ mark {
   color: var(--fg);
 }
 
+.datelist {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1ch;
+}
+
 .notes {
   display: grid;
   grid-template-columns: minmax(2.5rem, min-content) 1fr;
