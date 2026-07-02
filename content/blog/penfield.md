@@ -15,7 +15,7 @@ It's not an impressive feat, nor was it my intention; more or less everything el
 
 ### Penfield
 
-The Penfield Mood Organ is a fictional device from *Do Androids Dream of Electric Sheep? (1968) by Philip K Dick*. It uses Penfield artificial brain stimulation to modify the emotions of the user. All the user must do is read the manual to find the proper number, dial it, and then feel exactly as they've requested. For example, while I'm writing this, the current tone is "***816**. Desire to return to bed*".
+The Penfield Mood Organ is a fictional device from *Do Androids Dream of Electric Sheep? (1968) by Philip K Dick*. It uses Penfield artificial brain stimulation to modify the emotions of the user. All the user must do is read the manual to find the proper number, dial it, and then feel exactly as they've requested. For example, while I'm writing this, the current tone is <mark>***816**. Desire to return to bed*</mark>.
 
 I love the book and thought making some sort of digital mood organ would be cool enough to be considered <mark>a piece of art</mark>. It's a single page that regenerates once-per-hour, incrementing the current ring number (currently on *#3868*), and creating a new random message in the form of a flavour line about the Penfield Mood Organ waking you, the selected dial tone, and the meaning of that tone. And that's it.
 
