@@ -1,5 +1,6 @@
 base_url = "https://ily.rs"
 title = "ily"
+author = "l@ily.rs"
 compile_sass = false
 build_search_index = false
 generate_feeds = true

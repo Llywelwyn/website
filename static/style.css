@@ -46,6 +46,11 @@ nav {
   color: var(--muted);
 }
 
+footer {
+  margin-top: 1rem;
+  color: var(--muted);
+}
+
 dt:not(:first-child) {
   margin-top: 0.5rem;
 }

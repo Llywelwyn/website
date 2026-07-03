@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{% block title %}{{ config.title }}{% endblock %}</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="https://cdn.ily.rs/mascot.css">
-  {% if config.generate_feeds %}
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
-  {% endif %}
-</head>
-<body>
-  <nav>
-    <a href="/">Home</a><br>
-    <a href="/links/">Links</a><br>
-    <a href="/now/">Now</a><br>
-    <a href="/guestbook/">Guestbook</a>
-  </nav>
-  <p>404 :(</p>
-  <script>
-    window.goatcounter = { path: function(p) { return location.host + p } };
-  </script>
-  <script data-goatcounter="https://stats.ily.rs/count"
-          async src="https://stats.ily.rs/count.js"></script>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<p>404 :(</p>
+{% endblock %}
