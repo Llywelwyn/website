@@ -143,23 +143,3 @@ mark {
   color: var(--fg);
   font-style: italic;
 }
-
-.mascot {
-  position: fixed;
-  right: calc(2rem - (100vw - 100%));
-  bottom: 0;
-  width: 280px;
-  user-select: none;
-}
-
-.mascot img {
-  width: 100%;
-  -webkit-user-drag: none;
-  user-drag: none;
-}
-
-@media (max-width: 700px) {
-  .mascot {
-    display: none;
-  }
-}
