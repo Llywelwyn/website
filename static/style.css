@@ -1,7 +1,7 @@
 :root {
   color-scheme: light dark;
-  --bg: light-dark(#fff, #111);
-  --fg: light-dark(#000, #e8e8e8);
+  --bg: light-dark(#fff, #000);
+  --fg: light-dark(#000, #fff);
   --muted: light-dark(#666, #999);
 }
 
