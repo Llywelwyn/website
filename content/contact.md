@@ -1,6 +1,8 @@
 +++
 title = "Contacting me"
-date = 2021-02-11
+template = "page.html"
+path = "contact"
+aliases = ["/blog/contact/"]
 +++
 
 <a href="mailto:l@ily.rs">l@ily.rs</a>

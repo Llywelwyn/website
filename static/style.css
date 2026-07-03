@@ -47,6 +47,9 @@ nav {
 }
 
 footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   margin-top: 1rem;
   color: var(--muted);
 }
