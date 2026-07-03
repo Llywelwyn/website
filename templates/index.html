@@ -5,7 +5,7 @@
 {% set blog = get_section(path="blog/_index.md") %}
 <div class="datelist">
 {% for post in blog.pages %}
-<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+<span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
 {% endfor %}
 </div>
 
@@ -14,7 +14,7 @@
 {% set reading = get_section(path="read/_index.md") %}
 <div class="datelist">
 {% for post in reading.pages %}
-<span class="muted">{{ post.date | date(format="%Y/%m/%d") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+<span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
 {% endfor %}
 </div>
 
