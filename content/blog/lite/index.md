@@ -7,6 +7,8 @@ I've just got around to setting up a mirror of this site over at <a href="https:
 
 It was far easier to set up (and maintain) than I envisioned. I made a <mark>lite config</mark> for Zola which is pretty much identical to my standard config, except it has an extra bit of metadata saying that `lite` is true; and everywhere that the sites need to diverge there's an if-else checking if we're currently lite or not.
 
+{{ img(src="compare.png", alt="side-by-side screenshots of lite.ily.rs and ily.rs", caption="lite.ily.rs/blog/rl (left) and ily.rs/blog/rl (right)") }}
+
 My images are all in shortcodes already so they all got changed in one place. On the main site I have some basic setting of lazy loading, resizing and converting to webp, and adding a figcaption in place. For the lite version of the site, all of that is replaced with an anchor link directly to the image.
 
 Besides the images, it was just a case of deciding what should change structurally to place less reliance on styling. Rather than styled dd/dt elements, a few places become paragraphs with line-breaks, for example.
