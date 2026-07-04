@@ -4,8 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  {% if config.extra.lite %}
+  <style>
+    body { max-width: 70ch; }
+    .notes { display: grid; grid-template-columns: minmax(2.5rem, min-content) 1fr; gap: 0.25rem 0.5rem; margin: 1rem 0; }
+    .notes p { margin: 0; }
+  </style>
+  {% else %}
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="https://cdn.ily.rs/mascot.css">
+  {% endif %}
   {% if config.generate_feeds %}
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
   {% endif %}
@@ -18,10 +26,17 @@
     <a href="/guestbook/">Guestbook</a>
   </nav>
   {% block content %}{% endblock %}
-  <footer class="muted">
-    <a href="/contact/">Contact</a>
-    <a href="/rss.xml">RSS</a>
-  </footer>
-  <img src="https://stats.ily.rs/count?p=ily.rs{{ current_path | default(value='/404.html') | safe }}" alt="" width="1" height="1">
+  {% if not config.extra.lite %}
+    <footer class="muted">
+      <a href="/contact/">Contact</a>
+      <a href="/rss.xml">RSS</a>
+    </footer>
+    <img src="https://stats.ily.rs/count?p=ily.rs{{ current_path | default(value='/404.html') | safe }}" alt="" width="1" height="1">
+  {% else %}
+    <footer>
+      <a href="/contact/">Contact</a><br>
+      <a href="/rss.xml">RSS</a>
+    </footer>
+  {% endif %}
 </body>
 </html>
