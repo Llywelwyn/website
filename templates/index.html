@@ -2,37 +2,22 @@
 
 {% block content %}
 
-{% if config.extra.lite %}
-  <br>Writing<br><br>
-  {% set blog = get_section(path="blog/_index.md") %}
-  {% for post in blog.pages %}
-    <a href="{{ post.permalink }}">{{ post.title }}</a><br>
-  {% endfor %}
+<h2>Writing</h2>
 
-  <br>Reading<br><br>
+{% set blog = get_section(path="blog/_index.md") %}
+<div class="datelist">
+{% for post in blog.pages %}
+<span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+{% endfor %}
+</div>
 
-  {% set reading = get_section(path="read/_index.md") %}
-  {% for post in reading.pages %}
-    <a href="{{ post.permalink }}">{{ post.title }}</a><br>
-  {% endfor %}
-  <br>
-{% else %}
-  <h2>Writing</h2>
-  {% set blog = get_section(path="blog/_index.md") %}
-  <div class="datelist">
-  {% for post in blog.pages %}
-    <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
-  {% endfor %}
-  </div>
+<h2>Reading</h2>
 
-  <h2>Reading</h2>
-
-  {% set reading = get_section(path="read/_index.md") %}
-  <div class="datelist">
-  {% for post in reading.pages %}
-  <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
-  {% endfor %}
-  </div>
-{% endif %}
+{% set reading = get_section(path="read/_index.md") %}
+<div class="datelist">
+{% for post in reading.pages %}
+<span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+{% endfor %}
+</div>
 
 {% endblock %}
