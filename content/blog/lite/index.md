@@ -3,7 +3,7 @@ title = "lite.ily.rs"
 date = 2026-07-02
 +++
 
-I've just got around to setting up a mirror of this site over at <a href="https://lite.ily.rs">lite.ily.rs</a>. It's a text-only version of the site with no JavaScript and more or less zero CSS.
+I've just got around to setting up a mirror of this site over at <a href="https://lite.ily.rs/blog/lite">lite.ily.rs</a>. It's a text-only version of the site with no JavaScript and more or less zero CSS.
 
 It was far easier to set up (and maintain) than I envisioned. I made a <mark>lite config</mark> for Zola which is pretty much identical to my standard config, except it has an extra bit of metadata saying that `lite` is true; and everywhere that the sites need to diverge there's an if-else checking if we're currently lite or not.
 
