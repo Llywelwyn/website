@@ -1,2 +1,9 @@
+{% if config.extra.lite %}
+<p>
+{{ date }}<br>
+{{ body | markdown(inline=true) }}
+</p>
+{% else %}
 <dt class="muted">{{ date }}</dt>
 <dd style="text-align:justify;">{{ body | markdown(inline=true) | safe }}</dd>
+{% endif %}

@@ -4,7 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  {% if config.extra.lite %}
+  <style>
+    body { max-width: 70ch; }
+  </style>
+  {% else %}
   <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdn.ily.rs/mascot.css">
+  <link rel="icon" href="/favicon.png">
+  {% endif %}
   {% if config.generate_feeds %}
   <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml">
   {% endif %}
@@ -14,12 +22,27 @@
     <a href="/">Home</a><br>
     <a href="/links/">Links</a><br>
     <a href="/now/">Now</a><br>
+    {% if not config.extra.lite %}
     <a href="/guestbook/">Guestbook</a>
   </nav>
+    {% else %}
+    </nav>
+    <br>
+    This is the text-only, no-JS version of <a href="https://ily.rs{{ current_path | default(value='/404.html') | safe }}">ily.rs</a>.
+    <br>
+    {% endif %}
   {% block content %}{% endblock %}
-  <footer class="muted">
-    <a href="/contact/">Contact</a>
-    <a href="/rss.xml">RSS</a>
-  </footer>
+  {% if not config.extra.lite %}
+    <footer class="muted">
+      <a href="/contact/">Contact</a>
+      <a href="/rss.xml">RSS</a>
+    </footer>
+    <img src="https://stats.ily.rs/count?p=ily.rs{{ current_path | default(value='/404.html') | safe }}" alt="" width="1" height="1">
+  {% else %}
+    <footer>
+      <a href="/contact/">Contact</a><br>
+      <a href="/rss.xml">RSS</a>
+    </footer>
+  {% endif %}
 </body>
 </html>
