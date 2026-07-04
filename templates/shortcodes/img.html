@@ -1,22 +1,22 @@
 {% set alt = alt | default(value="") -%}
 {% set caption = caption | default(value="") -%}
 {% if config.extra.lite -%}
-<p><a href="https://ily.rs{{ page.path | safe }}{{ src }}">[image: {% if caption %}{{ caption }}{% elif alt %}{{ alt }}{% else %}{{ src }}{% endif %}]</a></p>
+  <p><a href="https://ily.rs{{ page.path | safe }}{{ src }}">[image: {% if caption %}{{ caption }}{% elif alt %}{{ alt }}{% else %}{{ src }}{% endif %}]</a></p>
 {%- else -%}
 {% set is_gif = src is ending_with(".gif") -%}
 {% set dir = page.relative_path | replace(from="index.md", to="") -%}
 {% set orig = page.permalink ~ src -%}
-<figure>
-  <a href="{{ orig }}">
-    {%- if is_gif %}
-    <img src="{{ orig }}" alt="{{ alt }}" loading="lazy">
-    {%- else %}
-    {%- set img = resize_image(path=dir ~ src, width=1120, op="fit_width", format="webp") %}
-    <img src="{{ img.url }}" alt="{{ alt }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
+  <figure>
+    <a href="{{ orig }}">
+      {%- if is_gif %}
+      <img src="{{ orig }}" alt="{{ alt }}" loading="lazy">
+      {%- else %}
+      {%- set img = resize_image(path=dir ~ src, width=1120, op="fit_width", format="webp") %}
+      <img src="{{ img.url }}" alt="{{ alt }}" loading="lazy" width="{{ img.width }}" height="{{ img.height }}">
+      {%- endif %}
+    </a>
+    {%- if caption %}
+    <figcaption>{{ caption }}</figcaption>
     {%- endif %}
-  </a>
-  {%- if caption %}
-  <figcaption>{{ caption }}</figcaption>
-  {%- endif %}
-</figure>
+  </figure>
 {%- endif %}
