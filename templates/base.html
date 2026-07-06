@@ -9,6 +9,14 @@
   {% elif page is undefined and config.description %}
   <meta name="description" content="{{ config.description }}">
   {% endif %}
+  <meta property="og:title" content="{% if page is defined %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
+  {% if page is defined and page.description %}
+  <meta property="og:description" content="{{ page.description }}">
+  {% elif page is undefined and config.description %}
+  <meta property="og:description" content="{{ config.description }}">
+  {% endif %}
+  <meta property="og:type" content="{% if page is defined and page.date %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ current_url | default(value=config.base_url) | safe }}">
   {% if config.extra.lite %}
   <style>
     body { max-width: 70ch; }
