@@ -59,6 +59,7 @@ dt:not(:first-child) {
 
 dd {
   margin: 0;
+  text-align: justify;
 }
 
 img {
