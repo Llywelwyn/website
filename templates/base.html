@@ -24,13 +24,13 @@
     <a href="/now/">Now</a><br>
     {% if not config.extra.lite %}
     <a href="/guestbook/">Guestbook</a>
-  </nav>
-    {% else %}
-    </nav>
-    <br>
-    This is the text-only, no-JS version of <a href="https://ily.rs{{ current_path | default(value='/404.html') | safe }}">ily.rs</a>.
-    <br>
     {% endif %}
+  </nav>
+  {% if config.extra.lite %}
+  <br>
+  This is the text-only, no-JS version of <a href="https://ily.rs{{ current_path | default(value='/404.html') | safe }}">ily.rs</a>.
+  <br>
+  {% endif %}
   {% block content %}{% endblock %}
   {% if not config.extra.lite %}
     <footer class="muted">
