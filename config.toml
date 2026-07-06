@@ -1,5 +1,6 @@
 base_url = "https://ily.rs"
 title = "ily"
+description = "Writing and reading notes."
 author = "l@ily.rs"
 compile_sass = false
 build_search_index = false

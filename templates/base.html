@@ -4,6 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ config.title }}{% endblock %}</title>
+  {% if page is defined and page.description %}
+  <meta name="description" content="{{ page.description }}">
+  {% elif page is undefined and config.description %}
+  <meta name="description" content="{{ config.description }}">
+  {% endif %}
   {% if config.extra.lite %}
   <style>
     body { max-width: 70ch; }
