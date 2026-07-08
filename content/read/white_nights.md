@@ -1,5 +1,5 @@
 +++
-title = "White Nights (1848) by Fyodor Dostoevsky"
+title = "*White Nights* (1848) by Fyodor Dostoevsky"
 date = 2026-05-02
 draft = true
 +++

@@ -1,5 +1,5 @@
 +++
-title = "[\"kitty\".sixteen,5'1\",white,prostitute] by E. E. Cummings"
+title = "*[\\\"kitty\\\".sixteen,5\\'1\\\",white,prostitute]* by E. E. Cummings"
 date = 2026-06-19
 +++
 

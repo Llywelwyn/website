@@ -2,35 +2,48 @@
 
 {% block content %}
 
+{% set blog = get_section(path="blog/_index.md") %}
+{% set reading = get_section(path="read/_index.md") %}
+{% set pins = load_data(url="https://file.ily.rs/pins.json", format="json", required=false) %}
+
 {% if config.extra.lite %}
-  <br>Writing<br><br>
-  {% set blog = get_section(path="blog/_index.md") %}
+  <br>
+  My longer-form posts.<br><br>
   {% for post in blog.pages %}
-    <a href="{{ post.permalink }}">{{ post.title }}</a><br>
+    <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
   {% endfor %}
 
-  <br>Reading<br><br>
+  {% if pins %}
+  <br>I also share various files at <a href="https://file.ily.rs">file.ily.rs</a>.<br><br>
+  {% for pin in pins %}
+    <a href="https://file.ily.rs/{{ pin.name }}">{{ pin.desc }}</a><br>
+  {% endfor %}
+  {% endif %}
 
-  {% set reading = get_section(path="read/_index.md") %}
+  <br>And notes on stuff I've read.<br><br>
   {% for post in reading.pages %}
-    <a href="{{ post.permalink }}">{{ post.title }}</a><br>
+    <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
   {% endfor %}
   <br>
 {% else %}
-  <h2>Writing</h2>
-  {% set blog = get_section(path="blog/_index.md") %}
+  My longer-form posts.<br><br>
   <div class="datelist">
   {% for post in blog.pages %}
-    <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+    <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
   {% endfor %}
   </div>
 
-  <h2>Reading</h2>
+  {% if pins %}
+  <br>I also share various files at <a href="https://file.ily.rs">file.ily.rs</a>.<br><br>
+  {% for pin in pins %}
+    <a href="https://file.ily.rs/{{ pin.name }}">{{ pin.desc }}</a><br>
+  {% endfor %}
+  {% endif %}
 
-  {% set reading = get_section(path="read/_index.md") %}
+  <br>And notes on stuff I've read.<br><br>
   <div class="datelist">
   {% for post in reading.pages %}
-  <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title }}</a>
+  <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
   {% endfor %}
   </div>
 {% endif %}

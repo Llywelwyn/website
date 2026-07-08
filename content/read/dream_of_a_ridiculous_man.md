@@ -1,5 +1,5 @@
 +++
-title = "The Dream of a Ridiculous Man (1877) by Fyodor Dostoevsky"
+title = "*The Dream of a Ridiculous Man* (1877) by Fyodor Dostoevsky"
 date = 2026-05-02
 +++
 

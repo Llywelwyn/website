@@ -9,7 +9,7 @@
   {% elif page is undefined and config.description %}
   <meta name="description" content="{{ config.description }}">
   {% endif %}
-  <meta property="og:title" content="{% if page is defined %}{{ page.title }}{% else %}{{ config.title }}{% endif %}">
+  <meta property="og:title" content="{% if page is defined %}{{ page.title | markdown(inline=true) | striptags }}{% else %}{{ config.title }}{% endif %}">
   {% if page is defined and page.description %}
   <meta property="og:description" content="{{ page.description }}">
   {% elif page is undefined and config.description %}
