@@ -34,6 +34,7 @@ p {
 
 a {
   color: var(--fg);
+  text-decoration-color: var(--muted);
 }
 
 a:hover {
