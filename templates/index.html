@@ -8,7 +8,6 @@
 
 {% if config.extra.lite %}
   <br>
-  My longer-form posts.<br><br>
   {% for post in blog.pages %}
     <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
   {% endfor %}
@@ -20,13 +19,11 @@
   {% endfor %}
   {% endif %}
 
-  <br>And notes on stuff I've read.<br><br>
   {% for post in reading.pages %}
     <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
   {% endfor %}
   <br>
 {% else %}
-  My longer-form posts.<br><br>
   <div class="datelist">
   {% for post in blog.pages %}
     <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
@@ -40,7 +37,6 @@
   {% endfor %}
   {% endif %}
 
-  <br>And notes on stuff I've read.<br><br>
   <div class="datelist">
   {% for post in reading.pages %}
   <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
