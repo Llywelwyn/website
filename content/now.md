@@ -11,10 +11,6 @@ Set up a tiny mail server on the website box so I can write posts by email.
 {% end %}
 
 {% update(date="02/09/26") %}
-A tiny mail server on the website box now allows me to email in new posts.
-{% end %}
-
-{% update(date="02/09/26") %}
 Ordered a camera for future baby photos.
 {% end %}
 
