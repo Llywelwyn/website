@@ -3,7 +3,7 @@
   "displayName": "Mono Light",
   "type": "light",
   "colors": {
-    "editor.background": "#f4f4f4",
+    "editor.background": "#ffffff",
     "editor.foreground": "#000000"
   },
   "tokenColors": [
