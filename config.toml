@@ -19,8 +19,7 @@ lazy_async_image = true
 github_alerts = true
 
 [markdown.highlighting]
-light_theme = "mono-light"
-dark_theme = "mono-dark"
-extra_themes = ["highlight/mono-light.json", "highlight/mono-dark.json"]
+theme = "mono-light"
+extra_themes = ["highlight/mono-light.json"]
 
 [extra]

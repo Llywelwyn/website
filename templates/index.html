@@ -28,7 +28,7 @@
   <br>
   <div class="datelist">
   {% for post in blog.pages %}
-    <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
+    <span>{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
   {% endfor %}
   </div>
 
@@ -42,7 +42,7 @@
   <br>
   <div class="datelist">
   {% for post in reading.pages %}
-  <span class="muted">{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
+  <span>{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
   {% endfor %}
   </div>
 {% endif %}

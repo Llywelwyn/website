@@ -24,7 +24,6 @@
   </style>
   {% else %}
   <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="https://cdn.ily.rs/mascot.css">
   <link rel="icon" href="/favicon.png">
   {% endif %}
   {% if config.generate_feeds %}
@@ -35,12 +34,14 @@
 </head>
 <body>
   <nav>
-    <a href="/">Home</a><br>
-    <a href="/links/">Links</a><br>
-    <a href="/now/">Now</a><br>
+    <a href="/">Home</a>&nbsp;
+    <a href="/links/">Links</a>&nbsp;
+    <a href="/now/">Now</a>&nbsp;
     {% if not config.extra.lite %}
-    <a href="/guestbook/">Guestbook</a>
+    <a href="/guestbook/">Guestbook</a>&nbsp;
     {% endif %}
+    <a href="mailto:l@ily.rs">Email</a>&nbsp;
+    <a href="/rss.xml">RSS</a>
   </nav>
   {% if config.extra.lite %}
   <br>
@@ -49,16 +50,7 @@
   {% endif %}
   {% block content %}{% endblock %}
   {% if not config.extra.lite %}
-    <footer class="muted">
-      <a href="/contact/">Contact</a>
-      <a href="/rss.xml">RSS</a>
-    </footer>
     <img src="https://stats.ily.rs/count?p=ily.rs{{ current_path | default(value='/404.html') | safe }}" alt="" width="1" height="1">
-  {% else %}
-    <footer>
-      <a href="/contact/">Contact</a><br>
-      <a href="/rss.xml">RSS</a>
-    </footer>
   {% endif %}
 </body>
 </html>

@@ -30,7 +30,8 @@ It may have been a dream, but it cannot be that it did not take place.
 {% end %}
 
 {% h(at="16") %}
-Like a foul trichina\*, <mark>like a pestilential germ bringing contagion to whole countries, I infected that earth, happy and sinless before my arrival.</mark> They learned how to lie, and grew to love lying and perceive its beauty.
+Like a foul trichina, <mark>like a pestilential germ bringing contagion to whole countries, I infected that earth, happy and sinless before my arrival.</mark> They learned how to lie, and grew to love lying and perceive its beauty.
+{% aside() %}*trichina*: a parasitic nematode worm.{% end %}
 {% end %}
 
 {% h(at="17") %}
@@ -48,11 +49,5 @@ Dream? What's a dream? <mark>Isn't this life of ours a dream?</mark> I'll go fur
 {% h(at="21") %}
 The chief thing is to love others as oneself, that's the main thing, and that's it—absolutely nothing more is necessary.
 {% end %}
-
-</div>
-
-<div class="notes notes--glossary">
-
-{{ h(at="trichina", body="A parasitic nematode worm.") }}
 
 </div>

@@ -4,6 +4,6 @@
 {{ body | markdown(inline=true) | safe }}
 </p>
 {% else %}
-<dt class="muted">{{ date }}</dt>
+<dt>{{ date }}</dt>
 <dd>{{ body | markdown(inline=true) | safe }}</dd>
 {% endif %}

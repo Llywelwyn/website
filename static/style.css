@@ -1,13 +1,11 @@
 :root {
-  color-scheme: light dark;
-  --bg: light-dark(#fff, #000);
-  --fg: light-dark(#000, #fff);
-  --muted: light-dark(#666, #999);
+  color-scheme: light;
+  --bg: #fff;
+  --fg: #000;
 }
 
 body {
   max-width: 70ch;
-  padding: 1rem 1rem;
   background: var(--bg);
   color: var(--fg);
   font-variant-numeric: tabular-nums;
@@ -34,23 +32,42 @@ p {
 
 a {
   color: var(--fg);
-  text-decoration-color: var(--muted);
 }
 
-a:hover {
-  color: var(--muted);
+aside {
+  float: right;
+  clear: right;
+  width: 16rem;
+  margin: 0 -18rem 1rem 0;
+  font-style: italic;
+  transform: translateY(calc(-1lh - 1rem));
 }
 
-nav {
-  color: var(--muted);
+.notes > div {
+  position: relative;
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 1rem;
-  color: var(--muted);
+.notes aside {
+  float: none;
+  position: absolute;
+  top: 0;
+  right: -18rem;
+  margin: 0;
+  transform: none;
+}
+
+@media (max-width: 60rem) {
+  aside {
+    float: none;
+    width: auto;
+    margin: 1rem 0;
+    transform: none;
+  }
+
+  .notes aside {
+    position: static;
+    margin: 0.5rem 0 0;
+  }
 }
 
 dt:not(:first-child) {
@@ -76,7 +93,6 @@ figure {
 
 figcaption {
   font-style: italic;
-  color: var(--muted);
   margin-top: 0.4rem;
   text-align: center;
 }
@@ -92,7 +108,7 @@ pre:has(> code) {
 
 hr {
   border: 0;
-  border-top: 1px solid var(--muted);
+  border-top: 1px solid;
   margin: 2rem 0;
 }
 
@@ -102,18 +118,9 @@ mark {
   padding: 0.05em 0.2em;
 }
 
-.muted {
-  color: var(--muted);
-}
-
 .anchor {
   text-decoration: none;
   margin-right: 0.3em;
-  color: var(--muted);
-}
-
-.anchor:hover {
-  color: var(--fg);
 }
 
 .datelist {
@@ -132,7 +139,6 @@ mark {
 .notes .meta {
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
-  color: var(--muted);
 }
 
 .notes p { margin: 0; }
@@ -149,6 +155,5 @@ mark {
 }
 
 .notes--glossary .meta {
-  color: var(--fg);
   font-style: italic;
 }
