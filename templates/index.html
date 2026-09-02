@@ -4,47 +4,17 @@
 
 {% set blog = get_section(path="blog/_index.md") %}
 {% set reading = get_section(path="read/_index.md") %}
-{% set pins = load_data(url="https://file.ily.rs/pins.json", format="json", required=false) %}
+{% set links = get_page(path="links.md") %}
 
-{% if config.extra.lite %}
-  <br>
-  {% for post in blog.pages %}
-    <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
-  {% endfor %}
-
-  {% if pins %}
-  <br>I also share various files at <a href="https://file.ily.rs">file.ily.rs</a>.<br><br>
-  {% for pin in pins %}
-    <a href="https://file.ily.rs/{{ pin.name }}">{{ pin.desc }}</a><br>
-  {% endfor %}
-  {% endif %}
-
-  <br>
-  {% for post in reading.pages %}
-    <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
-  {% endfor %}
-  <br>
-{% else %}
-  <br>
-  <div class="datelist">
-  {% for post in blog.pages %}
-    <span>{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
-  {% endfor %}
-  </div>
-
-  {% if pins %}
-  <br>I also share various files at <a href="https://file.ily.rs">file.ily.rs</a>.<br><br>
-  {% for pin in pins %}
-    <a href="https://file.ily.rs/{{ pin.name }}">{{ pin.desc }}</a><br>
-  {% endfor %}
-  {% endif %}
-
-  <br>
-  <div class="datelist">
-  {% for post in reading.pages %}
-  <span>{{ post.date | date(format="%d/%m/%y") }}</span><a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
-  {% endfor %}
-  </div>
-{% endif %}
-
+<br>
+{% for post in blog.pages %}
+<a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
+{% endfor %}
+<br>
+{% for post in reading.pages %}
+<a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
+{% endfor %}
+<br>
+<a href="https://file.ily.rs">file.ily.rs</a><br>
+{{ links.content | safe }}
 {% endblock %}

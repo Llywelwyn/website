@@ -8,6 +8,7 @@ body {
   max-width: 70ch;
   background: var(--bg);
   color: var(--fg);
+  font-size: 0.875rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -32,6 +33,10 @@ p {
 
 a {
   color: var(--fg);
+}
+
+a:visited {
+  color: #707070;
 }
 
 aside {
@@ -121,12 +126,6 @@ mark {
 .anchor {
   text-decoration: none;
   margin-right: 0.3em;
-}
-
-.datelist {
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  column-gap: 1ch;
 }
 
 .notes {

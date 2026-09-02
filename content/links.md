@@ -1,7 +1,5 @@
 +++
-title = "Links"
-template = "page.html"
-path = "links"
+render = false
 +++
 
 <a href="https://aksui.com/alcohol">aksui.com/alcohol</a> - quitting drinking<br>
