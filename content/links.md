@@ -1,10 +1,33 @@
 +++
 render = false
-+++
 
-<a href="https://aksui.com/alcohol">aksui.com/alcohol</a> - quitting drinking<br>
-<a href="https://ily.rs/status">ily.rs/status</a> - status page<br>
-<a href="https://textonly.website">textonly.website</a> - text only websites<br>
-<a href="https://t0.vc">t0.vc</a> - tanner's site<br>
-<a href="https://nownownow.com">nownownow.com</a> - directory of /now pages<br>
-<a href="https://coldscars.smol.pub">coldscars.smol.pub</a> - finnish poet<br>
+[[extra.links]]
+name = "aksui.com/alcohol"
+url = "https://aksui.com/alcohol"
+note = "quitting drinking"
+
+[[extra.links]]
+name = "ily.rs/status"
+url = "https://ily.rs/status"
+note = "status page"
+
+[[extra.links]]
+name = "textonly.website"
+url = "https://textonly.website"
+note = "text only websites"
+
+[[extra.links]]
+name = "t0.vc"
+url = "https://t0.vc"
+note = "tanner's site"
+
+[[extra.links]]
+name = "nownownow.com"
+url = "https://nownownow.com"
+note = "directory of /now pages"
+
+[[extra.links]]
+name = "coldscars.smol.pub"
+url = "https://coldscars.smol.pub"
+note = "finnish poet"
++++

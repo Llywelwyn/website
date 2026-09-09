@@ -1,6 +1,10 @@
 +++
 title = "*[\\\"kitty\\\".sixteen,5\\'1\\\",white,prostitute]* by E. E. Cummings"
 date = 2026-06-19
+[extra]
+name = "[\"kitty\".sixteen,5'1\",white,prostitute]"
+author = "E. E. Cummings"
+year = 1925
 +++
 
 <pre style="font:unset">

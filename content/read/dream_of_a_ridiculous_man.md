@@ -1,6 +1,10 @@
 +++
 title = "*The Dream of a Ridiculous Man* (1877) by Fyodor Dostoevsky"
 date = 2026-05-02
+[extra]
+name = "The Dream of a Ridiculous Man"
+author = "Fyodor Dostoevsky"
+year = 1877
 +++
 
 <div class="notes">

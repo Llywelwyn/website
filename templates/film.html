@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}ily film{% endblock %}
+
+{% block content %}
+<h1>Film</h1>
+
+{% if section.extra.watchlist %}
+<div class="watchlist">
+  Watch list
+  <ul>
+    {% for w in section.extra.watchlist %}
+    <li>{{ w }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+{% for f in section.extra.films | default(value=[]) %}
+<div class="film" id="{{ f.slug }}">
+  <h3><a class="anchor" href="#{{ f.slug }}" aria-hidden="true">#</a><em>{{ f.name }}</em> ({{ f.year }}) dir. {{ f.director }}</h3>
+  {% if not config.extra.lite %}
+  {% set frame = resize_image(path="film/" ~ f.slug ~ ".jpg", width=1200, op="fit_width") %}
+  <figure>
+    <img src="{{ frame.url }}" alt="Still from {{ f.name }}">
+    {% if f.note %}
+    <figcaption>{{ f.note | markdown(inline=true) | safe }}</figcaption>
+    {% endif %}
+  </figure>
+  {% elif f.note %}
+  <p>{{ f.note | markdown(inline=true) | safe }}</p>
+  {% endif %}
+</div>
+{% endfor %}
+{% endblock %}

@@ -8,7 +8,7 @@ body {
   max-width: 70ch;
   background: var(--bg);
   color: var(--fg);
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-variant-numeric: tabular-nums;
 }
 
@@ -123,6 +123,66 @@ mark {
   padding: 0.05em 0.2em;
 }
 
+.film + .film {
+  margin-top: 4rem;
+}
+
+.toc {
+  margin: 0 0 1.5rem;
+}
+
+.toc > div {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4em;
+  margin: 0.2rem 0;
+}
+
+.toc .leader {
+  flex: 1;
+  min-width: 2em;
+  border-bottom: 1px dotted #999;
+  transform: translateY(-0.25em);
+}
+
+.toc .who {
+  color: #707070;
+  white-space: nowrap;
+}
+
+.watchlist {
+  color: #707070;
+  margin-bottom: 2.5rem;
+}
+
+.watchlist ul {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+}
+
+.watchlist li::before {
+  content: "- ";
+}
+
+.toc .still {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: calc(70ch + 4rem);
+  width: 20rem;
+}
+
+.toc > div:hover .still {
+  display: block;
+}
+
+@media (max-width: 70rem) {
+  .toc .still {
+    display: none !important;
+  }
+}
+
 .anchor {
   text-decoration: none;
   margin-right: 0.3em;
@@ -156,3 +216,6 @@ mark {
 .notes--glossary .meta {
   font-style: italic;
 }
+
+
+

@@ -1,6 +1,10 @@
 +++
 title = "*th* (2024) by me"
 date = 2024-04-21
+[extra]
+name = "th"
+author = "me"
+year = 2024
 +++
 
 <pre>

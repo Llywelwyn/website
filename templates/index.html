@@ -4,16 +4,51 @@
 
 {% set blog = get_section(path="blog/_index.md") %}
 {% set reading = get_section(path="read/_index.md") %}
+{% set films = get_section(path="film/_index.md") %}
 {% set links = get_page(path="links.md") %}
 
-<br>
+<h2>Posts</h2>
+<div class="toc">
 {% for post in blog.pages %}
-<a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
+  <div>
+    <a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a>
+    <span class="leader">&nbsp;</span>
+    <span class="who">{{ post.date | date(format="%Y") }}</span>
+  </div>
 {% endfor %}
-<br>
+</div>
+<h2>Reading</h2>
+<div class="toc">
 {% for post in reading.pages %}
-<a href="{{ post.permalink }}">{{ post.title | markdown(inline=true) | safe }}</a><br>
+  <div>
+    <a href="{{ post.permalink }}"><em>{{ post.extra.name }}</em></a>
+    <span class="leader">&nbsp;</span>
+    <span class="who">{{ post.extra.author }}, {{ post.extra.year }}</span>
+  </div>
 {% endfor %}
-<br>
-{{ links.content | safe }}
+</div>
+<h2>Film</h2>
+<div class="toc">
+{% for f in films.extra.films %}
+  <div>
+    <a href="{{ films.permalink }}#{{ f.slug }}"><em>{{ f.name }}</em></a>
+    <span class="leader">&nbsp;</span>
+    <span class="who">{{ f.director }}, {{ f.year }}</span>
+    {% if not config.extra.lite %}
+    {% set thumb = resize_image(path="film/" ~ f.slug ~ ".jpg", width=640, op="fit_width") %}
+    <span class="still"><img src="{{ thumb.url }}" alt=""></span>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+<h2>Links</h2>
+<div class="toc">
+{% for l in links.extra.links %}
+  <div>
+    <a href="{{ l.url }}">{{ l.name }}</a>
+    <span class="leader">&nbsp;</span>
+    <span class="who">{{ l.note }}</span>
+  </div>
+{% endfor %}
+</div>
 {% endblock %}
