@@ -20,7 +20,7 @@
 <div class="film" id="{{ f.slug }}">
   <h3><a class="anchor" href="#{{ f.slug }}" aria-hidden="true">#</a><em>{{ f.name }}</em> ({{ f.year }}) dir. {{ f.director }}</h3>
   {% if not config.extra.lite %}
-  {% set frame = resize_image(path="film/" ~ f.slug ~ ".jpg", width=1200, op="fit_width") %}
+  {% set frame = resize_image(path="film/" ~ f.slug ~ ".jpg", width=1200, height=514, op="fill") %}
   <figure>
     <img src="{{ frame.url }}" alt="Still from {{ f.name }}">
     {% if f.note %}

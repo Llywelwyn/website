@@ -35,7 +35,7 @@
     <span class="leader">&nbsp;</span>
     <span class="who">{{ f.director }}, {{ f.year }}</span>
     {% if not config.extra.lite %}
-    {% set thumb = resize_image(path="film/" ~ f.slug ~ ".jpg", width=640, op="fit_width") %}
+    {% set thumb = resize_image(path="film/" ~ f.slug ~ ".jpg", width=640, height=274, op="fill") %}
     <span class="still"><img src="{{ thumb.url }}" alt=""></span>
     {% endif %}
   </div>
