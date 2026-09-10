@@ -11,6 +11,13 @@ watchlist = [
 ]
 
 [[extra.films]]
+slug = "nightcrawler"
+name = "Nightcrawler"
+year = 2014
+director = "Dan Gilroy"
+note = "Watched with Alice."
+
+[[extra.films]]
 slug = "a-taxi-driver"
 name = "A Taxi Driver"
 year = 2017
